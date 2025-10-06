@@ -1,7 +1,5 @@
 const request = require("supertest");
-const petGetterMethod = require("../utils/helper.js");
-
-const BASE_URL = "https://petstore.swagger.io/v2/pet";
+const { petGetterMethod, petPOSTmethod } = require("../utils/petstoreMethods.js");
 
 describe("Pet Store API Test", () => {
     test("GET all Available pets", async() => {
@@ -15,4 +13,9 @@ describe("Pet Store API Test", () => {
     test("GET all Sold pets", async() => {
         await petGetterMethod("sold", "id", "sold");
     });
-})
+
+    test("POST a pet to petstore", async() => {
+        await petPOSTmethod();
+    })
+});
+
